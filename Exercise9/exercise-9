@@ -1,0 +1,44 @@
+//Q-1 Insert 3 students with fields:
+   // - `name`, `email`, `points`, `courses` (array)
+//---------------------------------------------------
+db.students1.insertMany([
+  {
+    name: "Safiya",
+    email: "safa@gmail.com",
+    points: 20,
+    course: ["Node.js", "React","HTML"]
+  },
+  {
+    name: "Ali",
+    email: "ali@gmail.com",
+    points: 10,
+    course: ["Node.js", "React"]
+  },
+  {
+    name: "Sagal",
+    email: "sagal@gmail.com",
+    points: 5,
+    course: ["MongoDB" ,"Tailwind", "JavaScript"]
+  }
+])
+
+//Q-2 Use $set to update one email
+//--------------------------------
+
+db.students1.updateOne({name: "Ali"}, {$set: {email:"aliyow@gmailcom"}})
+
+//Q-3 Use $inc to increase points
+//--------------------------------
+db.students1.updateOne({name: "Sagal"}, {$inc: {points:15}});
+
+//Q-4 Use $push to add a new course
+//------------------------------------
+db.students1.updateOne({name: "Ali"}, {$push: {course:"CSS"}})
+
+//Q-5 Use $pull to remove a course 
+//---------------------------------
+db.students1.updateOne({name: "Safiya"}, {$pull: {course:"React"}})
+
+//Q-6 BONUS: Update one student with $set, $inc, and $push together
+//--------------------------------------------------
+db.students1.updateMany({name: "Sagal"}, {$set:{email: "sagalcadeey@gmail.com"}, $inc:{points: 5}, $push:{course: "Artificial Intelligency"}});
